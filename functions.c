@@ -17,7 +17,6 @@ int print_char(va_list types, char buffer[],
 	int flags, int width, int precision, int size)
 {
 	char c = va_arg(types, int);
-	
 	return (handle_write_char(c, buffer, flags, width, precision, size));
 }
 
@@ -45,16 +44,17 @@ int print_string(va_list types, char buffer[],
 	UNUSED(width);
 	UNUSED(precision);
 	UNUSED(size);
-	
-	if (str == NULL)								{					
+	if (str == NULL)
+	{
 		str = "(null)";
 		if (precision >= 6)
-			str = "      ";							}
-
+			str = "      ";	
+	}
 	while (str[length] != '\0')
 		length++;
 
-	if (precision >= 0 && precision < length)						length = precision;
+	if (precision >= 0 && precision < length)
+		length = precision;
 
 	if (width > length)
 	{
@@ -69,7 +69,9 @@ int print_string(va_list types, char buffer[],
 		{
 			for (i = width - length; i > 0; i--)
 				write(1, " ", 1);
-			write(1, &str[0], length);							return (width);								}
+			write(1, &str[0], length);
+			return (width);
+		}
 	}
 	return (write(1, str, length));
 }
@@ -140,7 +142,7 @@ int print_int(va_list types, char buffer[],
 	
 	i++;
 	
-	return (write_number(is_negative, i, buffer, flags, width, precision,si			e));
+	return (write_number(is_negative, i, buffer, flags, width, precision,size));
 }
 
 /************************* PRINT BINARY *************************/
