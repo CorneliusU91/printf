@@ -48,7 +48,7 @@ int print_string(va_list types, char buffer[],
 	{
 		str = "(null)";
 		if (precision >= 6)
-			str = "";	
+			str = "";
 	}
 	while (str[length] != '\0')
 		length++;
@@ -121,7 +121,6 @@ int print_int(va_list types, char buffer[],
 	int is_negative = 0;
 	long int n = va_arg(types, long int);
 	unsigned long int num;
-	
 	n = convert_size_number(n, size);
 	if (n == 0)
 		buffer[i--] = '0';
@@ -137,7 +136,6 @@ int print_int(va_list types, char buffer[],
 		buffer[i--] = (num % 10) + '0';
 		num /= 10;
 	}
-	
 	i++;
 	return (write_number(is_negative, i, buffer, flags, width, precision,size));
 }
